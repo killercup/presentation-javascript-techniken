@@ -2,7 +2,10 @@
 title: Aktuelle JavaScript Techniken
 author: Pascal Hertleif
 date: "6\\. Oktober 2014"
+language: german
+locale: de
 
+citation-style: "lib/pascal.csl"
 references:
 - id: v8
   title: "V8 JavaScript Engine: Changelog" 
@@ -10,7 +13,7 @@ references:
   author: {family: Google}
   publisher: Google Code
   issued: {year: 2008}
-  accessed: 26 Sep 2014
+  accessed: {day: 26, month: 9, year: 2014}
   type: webpage
 - id: nodejs
   title: "Node.js"
@@ -19,12 +22,14 @@ references:
     given: "Dahl"
   URL: "http://nodejs.org/"
   issued: {year: 2009}
+  accessed: {day: 26, month: 9, year: 2014}
   type: "webpage"
 - id: "browserify"
   title: "Browserify website"
   author: {family: "Browserling Inc."}
   URL: "http://browserify.org/"
   issued: {year: 2012}
+  accessed: {day: 22, month: 9, year: 2014}
   type: "webpage"
 - id: webpack
   title: "webpack module bundler"
@@ -34,6 +39,7 @@ references:
   - given: Tobias
     family: Koppers
   issued: {year: 2012, month: 3, day: 4}
+  accessed: {day: 21, month: 9, year: 2014}
 - id: powers2012learning
   title: Learning node
   issued: {year: 2012}
@@ -42,7 +48,17 @@ references:
     family: Powers
   publisher: "O’Reilly Media, Inc."
   type: book
+- id: promisesaplus
+  title: Promises/A+
+  URL: http://promisesaplus.com/
+  author:
+  - family: Cavalier
+    given: Brian
+  - family: Denicola
+    given: Domenic
+  issued: {day: 6, month: 12, year: 2012}
+  accessed: {day: 26, month: 9, year: 2014}
 
 nocite: |
-  @powers2012learning
+  @powers2012learning @promisesaplus
 ---

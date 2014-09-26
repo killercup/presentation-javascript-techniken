@@ -9,6 +9,8 @@
 - Es kann erfüllt (_fulfilled_) oder abgelehnt (_rejected_) werden.
 - Es können Callbacks angehangen werden, die ausgeführt werden, sobald der Wert bekannt ist.
 
+Genauer: Promises/A+ [@promisesaplus]
+
 ### Beispiel
 
 Beispiel von Callback-Slides.

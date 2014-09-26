@@ -43,7 +43,7 @@ helper.demo();
 
 ### NPM
 
-- "Node Packaged Modules"
+- [npmjs.org](https://www.npmjs.org/), "Node Packaged Modules"
 - _Registry_ mit 96.608 Paketen (26. Sep 2014)
 - löst Abhängigkeiten automatisch auf
 - `npm install express`
