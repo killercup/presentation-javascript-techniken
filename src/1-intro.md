@@ -9,5 +9,4 @@
     + System-Schnittstellen
     + Event Loop
     + Ideal für JavaScript auf dem Server
-- Immer größeren Applikation in JavaScript
-
+- Immer größere Applikation in JavaScript
