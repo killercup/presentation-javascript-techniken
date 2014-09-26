@@ -1,0 +1,23 @@
+---
+title: Essential JavaScript Patterns
+author: Pascal Hertleif
+date: "6\\. Oktober 2014"
+
+references:
+
+- id: v8
+  title: "V8 JavaScript Engine: Changelog" 
+  URL: https://code.google.com/p/v8/source/browse/trunk/ChangeLog
+  author: {family: Google}
+  publisher: Google Code
+  issued: {year: 2008}
+  accessed: 26 Sep 2014
+- id: nodejs
+  title: "Node.js"
+  author:
+  - family: "Ryan"
+    given: "Dahl"
+  URL: "http://nodejs.org/"
+  issued: {year: 2009}
+  type: "webpage"
+---
