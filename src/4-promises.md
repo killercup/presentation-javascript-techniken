@@ -5,7 +5,7 @@
 
 ### Definition
 
-- Ein _Promise_ ist ein Objekt, welches einen zukünftigen Wert repräsentiert.
+- Ein _Promise_ repräsentiert einen zukünftigen Wert.
 - Es kann erfüllt (_fulfilled_) oder abgelehnt (_rejected_) werden.
 - Es können Callbacks angehangen werden, die ausgeführt werden, sobald der Wert bekannt ist.
 
