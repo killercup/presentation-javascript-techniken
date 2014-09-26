@@ -9,10 +9,12 @@
 
 ### CommonJS Module
 
-- werden von node.js verwendet
-- 1 Datei = 1 Modul
-- Globale Variablen: `require` und `module`
-- explizite Abhängigkeiten
+- von node.js verwendet
+- 1 Datei = 1 Modul, explizite Abhängigkeiten
+- Globale Variablen:
+    + `require` lädt Module
+    + `module` repräsentiert das aktuelle Modul
+    + `module.exports` ist, was von `require` zurückgegeben wird
 
 ### Beispiel
 
