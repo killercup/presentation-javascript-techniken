@@ -11,6 +11,7 @@ references:
   publisher: Google Code
   issued: {year: 2008}
   accessed: 26 Sep 2014
+  type: webpage
 - id: nodejs
   title: "Node.js"
   author:
@@ -33,4 +34,15 @@ references:
   - given: Tobias
     family: Koppers
   issued: {year: 2012, month: 3, day: 4}
+- id: powers2012learning
+  title: Learning node
+  issued: {year: 2012}
+  author:
+  - given: Shelley
+    family: Powers
+  publisher: "O’Reilly Media, Inc."
+  type: book
+
+nocite: |
+  @powers2012learning
 ---
