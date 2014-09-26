@@ -24,7 +24,8 @@ $endif$
   <style type="text/css">code{white-space: pre;}</style>
 $if(highlighting-css)$
   <style type="text/css">
-    pre.sourceCode { background-color: #FDF6E3 }
+    /* Solarized Light */
+    pre.sourceCode { background-color: #FDF6E3; word-break: break-word; }
     .sourceCode .kw { color: #d33682; }
     .sourceCode .dt { color: #268BD2; }
     .sourceCode .dv, .sourceCode .bn, .sourceCode .fl { color: #D33682; }
@@ -38,6 +39,21 @@ $if(highlighting-css)$
     .sourceCode .er { color: #D30102; font-weight: bold; }
   </style>
 $endif$
+  <style type="text/css">
+    /* Custom styles */
+    .reveal ul, .reveal ol, .reveal p {line-height: 1.4; }
+
+    h1.title {color: #dc322f;}
+    h2.author {color: #586e75;}
+    h3.date {color: #93a1a1;}
+
+    .reveal .citation {font-style: italic;}
+
+    pre.sourceCode {box-shadow: none; font-size: 0.8em;}
+
+    .references a.uri {word-break: break-all;}
+  </style>
+
   <!-- If the query includes 'print-pdf', include the PDF print sheet -->
   <script>
     if( window.location.search.match( /print-pdf/gi ) ) {
@@ -95,7 +111,9 @@ $body$
       // https://github.com/hakimel/reveal.js#configuration
       Reveal.initialize({
         controls: true,
+        touch: true,
         progress: true,
+        slideNumber: true,
         history: true,
         center: true,
         theme: $if(theme)$'$theme$'$else$Reveal.getQueryHash().theme$endif$, // available themes are in /css/theme
@@ -104,7 +122,7 @@ $body$
         // Optional libraries used to extend on reveal.js
         dependencies: [
           { src: '$revealjs-url$/lib/js/classList.js', condition: function() { return !document.body.classList; } },
-          { src: '$revealjs-url$/plugin/zoom-js/zoom.js', async: true, condition: function() { return !!document.body.classList; } },
+//          { src: '$revealjs-url$/plugin/zoom-js/zoom.js', async: true, condition: function() { return !!document.body.classList; } },
           { src: '$revealjs-url$/plugin/notes/notes.js', async: true, condition: function() { return !!document.body.classList; } },
 //          { src: '$revealjs-url$/plugin/highlight/highlight.js', async: true, callback: function() { hljs.initHighlightingOnLoad(); } },
 //          { src: '$revealjs-url$/plugin/search/search.js', async: true, condition: function() { return !!document.body.classList; }, }
