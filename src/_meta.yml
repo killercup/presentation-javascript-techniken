@@ -4,7 +4,6 @@ author: Pascal Hertleif
 date: "6\\. Oktober 2014"
 
 references:
-
 - id: v8
   title: "V8 JavaScript Engine: Changelog" 
   URL: https://code.google.com/p/v8/source/browse/trunk/ChangeLog
@@ -20,4 +19,18 @@ references:
   URL: "http://nodejs.org/"
   issued: {year: 2009}
   type: "webpage"
+- id: "browserify"
+  title: "Browserify website"
+  author: {family: "Browserling Inc."}
+  URL: "http://browserify.org/"
+  issued: {year: 2012}
+  type: "webpage"
+- id: webpack
+  title: "webpack module bundler"
+  URL: http://webpack.github.io/
+  type: webpage
+  author:
+  - given: Tobias
+    family: Koppers
+  issued: {year: 2012, month: 3, day: 4}
 ---
