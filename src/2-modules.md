@@ -42,8 +42,14 @@ helper.demo();
 ### NPM
 
 - "Node Packaged Modules"
-- 96.608 Pakete (26. Sep 2014)
+- _Registry_ mit 96.608 Paketen (26. Sep 2014)
+- löst Abhängigkeiten automatisch auf
 - `npm install express`
+
+<aside class="notes">
+- Pakete können zentral gespeichert werden (müssen aber nicht)
+- Ein Grund, warum node.js so viel Anklang findet
+</aside>
 
 ### Module im Browser
 
