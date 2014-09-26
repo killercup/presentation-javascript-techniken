@@ -7,8 +7,8 @@
 - Reagieren auf (externe) Eregnisse
 - Code soll ausgeführt werden, sobald z.B.
     + User klickt
-    + Datei wurde geschrieben
-- Code im bestehende Kontext ausführen
+    + Datei geschrieben wurde
+- wird im bestehende Kontext ausgeführen
 
 ### Anonyme Funktionen
 

@@ -47,8 +47,9 @@ helper.demo();
 
 ### Module im Browser
 
-- Module müssen zusammengefasst/umformuliert werden
-- Tools:
+- Code kann nicht direkt eingebunden werden
+- Tools, um CommonJS zu verarbeiten:
     - browserify [@browserify]
     - webpack [@webpack]
+- Anderes System: AMD (_require.js_)
 
