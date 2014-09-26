@@ -1,5 +1,8 @@
 ## Fragen?
 
-## Quellen {.allowframebreaks}
-
 ---
+
+Danke für eure Aufmerksamkeit.
+
+### Quellen {.allowframebreaks}
+
