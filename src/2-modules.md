@@ -1,4 +1,5 @@
-## Code Strukur: Module
+
+## Module
 
 ### Ziel
 
@@ -23,9 +24,8 @@ module.exports = {
     return "Lorem ispum";
   }
 }
-```
 
-```javascript
+
 // main.js
 var helper = require('./helper');
 helper.demo();
@@ -51,3 +51,4 @@ helper.demo();
 - Tools:
     - browserify [@browserify]
     - webpack [@webpack]
+

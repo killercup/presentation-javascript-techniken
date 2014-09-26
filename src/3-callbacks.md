@@ -1,24 +1,26 @@
-## Control Flow: Callbacks
 
-### Wozu Callbacks?
+## Callbacks
 
+### Was sind Callbacks?
+
+- Beim Aufruf einer Funktion wird eine "Rückgabe-Funktion" mitgegeben
 - Reagieren auf (externe) Eregnisse
-- Code soll ausgeführt werden, sobald
+- Code soll ausgeführt werden, sobald z.B.
     + User klickt
-    + Datei geschrieben
-- Code im _aktuellen_ Kontext ausführen
+    + Datei wurde geschrieben
+- Code im bestehende Kontext ausführen
 
 ### Anonyme Funktionen
 
 ```javascript
 function forEach (list, fn) {
-  var _len = list.length;
-  for (i = 0; i < _len; i++) {
+  for (i = 0; i < list.length; i++) {
     fn(list[i]);
   }
 }
 
 var user = ['Hans', 'Paul'];
+
 forEach(users, function (user) {
   console.log(user);
 });
@@ -66,9 +68,13 @@ fs.writeFile('example2.txt', content, log);
 Verwendet jQuery.
 
 ```javascript
-$('button').on('click', function (event) {
-  console.log('Button was clicked.');
-});
+jQuery.ready(function () {
+  var state = 1;
+  $('button').on('click', function (event) {
+    console.log('Clicked', state, 'times');
+    state = state + 1;
+  });
+})
 ```
 
 ### Verschachtelte Callbacks
@@ -78,4 +84,6 @@ $('button').on('click', function (event) {
     + dann 3 Netzwerk-Abfragen
     + dann User-Eingabe abwarten
     + dann Ergebnis in Datei schreiben
-- führt schnell zu vielen verschachtelten Funktionen mit vielen `if (error)`-Abfragen
+- viele verschachtelte Funktionen, viele `if (error)`
+- "Callback-Hell"
+
