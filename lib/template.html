@@ -49,8 +49,9 @@ $endif$
 
     .reveal .citation {font-style: italic;}
 
-    pre.sourceCode {box-shadow: none; font-size: 0.8em;}
+    pre.sourceCode {box-shadow: none; font-size: 0.7em;}
 
+    .reveal .references { font-size: 0.65em; }
     .references a.uri {word-break: break-all;}
   </style>
 
@@ -110,6 +111,13 @@ $body$
       // Full list of configuration options available here:
       // https://github.com/hakimel/reveal.js#configuration
       Reveal.initialize({
+        width: 960,
+        height: 700,
+        margin: 0.1,
+
+        minScale: 0.1,
+        maxScale: 3.0,
+
         controls: true,
         touch: true,
         progress: true,
