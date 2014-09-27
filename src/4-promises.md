@@ -10,30 +10,31 @@
 
 Genauer: Promises/A+ [@promisesaplus]
 
-### Beispiel
-
-Beispiel von Callback-Slides.
+### Beispiel (ajax)
 
 ```javascript
-var requests = readConfig()
+jQuery.ready(function () {
+  var currentUser = {name: "Pascal"};
+
+  jQuery.getJSON('/me')
+  .then(function (result) {
+    currentUser = result.data;
+  })
+  .fail(function (err) { console.error(err); });
+});
+```
+
+### Beispiel (node)
+
+```javascript
+requests = readConfig()
 .then(function (config) {
   return Promise.all(urls, function (url) {
     return request(config, url);
   });
 })
-```
-
----
-
-(Fortsetzung.)
-
-```javascript
-requests.then(function (requests) {
-  return userInput(requests);
-})
-.then(function (input) {
-  return writeFile('result.txt', input);
-})
+.then(userInput)
+.then(writeFile('result.txt'))
 .catch(function (error) {
   console.error(error);
 })
