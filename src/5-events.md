@@ -1,4 +1,4 @@
-## Events & Streams
+## Events
 
 ### Asynchrone Ereignisse
 
@@ -13,9 +13,9 @@
 ### Beispiel (jQuery)
 
 ```javascript
-jQuery.ready(function () {
+jQuery.ready(function ($) {
   var state = 1;
-  $('button').on('click', function (event) {
+  jQuery('button').on('click', function (event) {
     console.log('Clicked', state, 'times');
     state = state + 1;
   });
@@ -32,28 +32,18 @@ file.on('error', logError);
 file.on('end', logSuccess);
 ```
 
-### Streams
+Auch: Event bei neuer Verbindung zu Server.
 
-- "Ereignis-Fluß"
-- Daten werden in Buffer gespeichert (Push/Pull)
-- Functional Reactive Programming
-
-### Streams in Node
+### Events erstellen
 
 ```javascript
-var request = require("request");
-var zlib = require("zlib");
-var fs = require("fs");
-
-// HTTP GET Request
-request("http://nodestreams.com/input/people.json.gz")
-    // Un-Gzip
-    .pipe(zlib.createGunzip())
-    // Write File
-    .pipe(fs.createWriteStream("output/people.json"));
+jQuery.ready(function ($) {
+  jQuery('#bar').on('click', function () {
+    jQuery('#foo').trigger('magic', {answer: 42});
+  });
+  jQuery('#foo').on('magic', function (event, data) {
+    console.log("Answer is", data.anwer);
+  });
+})
 ```
-
-Vergleiche auch Beispiele auf [nodestreams.com](http://nodestreams.com/).
-
-
 

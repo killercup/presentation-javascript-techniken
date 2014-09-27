@@ -64,12 +64,12 @@ fs.writeFile('example2.txt', "Two", log);
 Verwendet jQuery.
 
 ```javascript
-jQuery.ready(function ($) {
+jQuery.ready(function () {
   var currentUser = {name: "Pascal"};
-  $.getJSON('/me', function (result) {
+  jQuery.getJSON('/me', function (result) {
     currentUser = result.data;
   });
-})
+});
 ```
 
 ### Verschachtelte Callbacks
