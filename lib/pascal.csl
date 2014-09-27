@@ -35,20 +35,11 @@
     <updated>2014-09-03T18:33:58+00:00</updated>
     <rights license="http://creativecommons.org/licenses/by-sa/3.0/">This work is licensed under a Creative Commons Attribution-ShareAlike 3.0 License</rights>
   </info>
-  <!-- <locale xml:lang="en">
+  <locale xml:lang="en">
     <terms>
       <term name="chapter" form="short">ch.</term>
       <term name="presented at">presented at the</term>
       <term name="available at">available</term>
-    </terms>
-  </locale> -->
-  <locale xml:lang="en">
-    <terms>
-      <term name="chapter" form="short">ch.</term>
-      <term name="presented at">vorgetragen an</term>
-      <term name="available at">Verfügbar unter</term>
-      <term name="available">Verfügbar unter</term>
-      <term name="accessed">Aufgerufen</term>
     </terms>
   </locale>
   <!-- Macros -->

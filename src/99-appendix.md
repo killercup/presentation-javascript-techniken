@@ -1,4 +1,3 @@
-
 ## Fragen?
 
 ### Danke für eure Aufmerksamkeit.

@@ -1,4 +1,3 @@
-
 ## Promises
 
 ---
@@ -57,3 +56,4 @@ var maybe = new Promise(function (resolve, reject) {
   }, 1000);
 });
 ```
+

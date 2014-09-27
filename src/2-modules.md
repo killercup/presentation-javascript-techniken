@@ -1,4 +1,3 @@
-
 ## Module
 
 ### Ziel
@@ -10,11 +9,15 @@
 ### CommonJS Module
 
 - von node.js verwendet
-- 1 Datei = 1 Modul, explizite Abhängigkeiten
-- Globale Variablen:
-    + `require` lädt Module
-    + `module` repräsentiert das aktuelle Modul
-    + `module.exports` ist, was von `require` zurückgegeben wird
+- explizite Abhängigkeiten
+- Nur eins von vielen Modul-Systemen
+
+### Modul-Aufbau
+
+- 1 Datei = 1 Modul
+- `require` lädt andere Module
+- `module` repräsentiert das aktuelle Modul
+- `module.exports` ist, was andere Module von `require` bekommen
 
 ### Beispiel
 

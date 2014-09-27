@@ -1,4 +1,3 @@
-
 ## JavaScript — Was bisher geschah
 
 ---
@@ -10,3 +9,4 @@
     + Event Loop
     + Ideal für JavaScript auf dem Server
 - Immer größere Applikation in JavaScript
+

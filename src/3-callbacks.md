@@ -1,14 +1,4 @@
-
 ## Callbacks
-
-### Was sind Callbacks?
-
-- Beim Aufruf einer Funktion wird eine "Rückgabe-Funktion" mitgegeben
-- Reagieren auf (externe) Eregnisse
-- Code soll ausgeführt werden, sobald z.B.
-    + User klickt
-    + Datei geschrieben wurde
-- wird im bestehende Kontext ausgeführen
 
 ### Anonyme Funktionen
 
@@ -26,16 +16,23 @@ forEach(users, function (user) {
 });
 ```
 
+### Was sind Callbacks?
+
+- Beim Aufruf einer Funktion wird eine "Rückgabe-Funktion" mitgegeben
+- Reagieren auf (externe) Ereignisse
+- wird im bestehende Kontext ausgeführen
+- Code soll ausgeführt werden, sobald z.B.
+    + User klickt
+    + Datei geschrieben wurde
+
 ### Synchroner Code
 
 ```javascript
 var fs = require('fs');
-var content = "Lorem Ipsum";
-fs.writeFileSync('example.txt', content);
+fs.writeFileSync('example.txt', "Lorem Ipsum");
 console.log("File written");
 ```
 
----
 
 - `writeFileSync` blockiert den Prozess, bis Datei geschrieben wurde
 - danach wird auf die Konsole geschrieben
@@ -51,9 +48,8 @@ function log (err, res) {
   }
 }
 
-var content = "Lorem Ipsum";
-fs.writeFile('example1.txt', content, log);
-fs.writeFile('example2.txt', content, log);
+fs.writeFile('example1.txt', "One", log);
+fs.writeFile('example2.txt', "Two", log);
 ```
 
 ---
