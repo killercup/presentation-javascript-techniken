@@ -64,11 +64,10 @@ fs.writeFile('example2.txt', "Two", log);
 Verwendet jQuery.
 
 ```javascript
-jQuery.ready(function () {
-  var state = 1;
-  $('button').on('click', function (event) {
-    console.log('Clicked', state, 'times');
-    state = state + 1;
+jQuery.ready(function ($) {
+  var currentUser = {name: "Pascal"};
+  $.getJSON('/me', function (result) {
+    currentUser = result.data;
   });
 })
 ```
