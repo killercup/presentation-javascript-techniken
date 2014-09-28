@@ -41,20 +41,30 @@ $if(highlighting-css)$
 $endif$
   <style type="text/css">
     /* Custom styles */
+    .reveal h1 {font-size: 2em;}
+
+    .reveal h1, .reveal h2, .reveal h3, .reveal h4, .reveal h5, .reveal h6 {-webkit-hyphens: auto; -moz-hyphens: auto; hyphens: auto;}
     .reveal ul, .reveal ol, .reveal p {line-height: 1.4; margin-bottom: 0.4em;}
 
-    h1.title {color: #dc322f;}
+    h1.title {color: #dc322f; font-size: 3.77em;}
     h2.author {color: #586e75;}
     h3.date {color: #93a1a1;}
 
     .reveal section p {text-align: left;}
+
+    .reveal figure {display: flex; align-items: flex-end;
+      display: -webkit-flex; display: -moz-flex; display: -ms-flex; display: -o-flex; -webkit-align-items: flex-end;}
+    .reveal figure img {/*flex: 1;*/ border: 0; box-shadow: none; margin: 0 1em 0;
+      /*-webkit-flex: 1;*/}
+    .reveal figure figcaption {font-size: 0.75em; margin-right: 2em;}
 
     .reveal .citation {font-size: 0.6em; vertical-align: text-top;}
 
     .reveal pre code {padding: 0;}
     pre.sourceCode {box-shadow: none; font-size: 0.7em;}
 
-    .reveal .references { font-size: 0.65em; }
+    .reveal .references {font-size: 0.6em; columns: 2;
+      -webkit-columns: 2; -moz-columns: 2;}
     .references a.uri {word-break: break-all;}
   </style>
 
@@ -114,8 +124,8 @@ $body$
       // Full list of configuration options available here:
       // https://github.com/hakimel/reveal.js#configuration
       Reveal.initialize({
-        width: 960,
-        height: 700,
+        width: 1000,
+        height: 560,
         margin: 0.1,
 
         minScale: 0.1,

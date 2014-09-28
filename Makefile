@@ -2,6 +2,7 @@ PANDOC ?= $(shell which pandoc)
 INPUT_FOLDER ?= $(shell pwd)/src
 OUTPUT_FOLDER ?= $(shell pwd)/dist
 LIB_FOLDER ?= $(shell pwd)/lib
+IMAGES_FOLDER ?= $(INPUT_FOLDER)/figures
 
 REVEAL_TEMPLATE ?= $(LIB_FOLDER)/template.html
 MARKDOWN_OPTIONS ?= markdown
@@ -18,6 +19,7 @@ all: clean revealjs
 ###
 revealjs:
 	cp -R $(LIB_FOLDER) $(OUTPUT_FOLDER); \
+	cp -R $(IMAGES_FOLDER) $(OUTPUT_FOLDER); \
 	$(PANDOC) $(INPUT_FOLDER)/*.yml $(INPUT_FOLDER)/*.md \
 	--from=$(MARKDOWN_OPTIONS) \
 	--table-of-contents --toc-depth=2 \
