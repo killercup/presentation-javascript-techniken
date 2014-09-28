@@ -58,6 +58,12 @@ references:
     given: Domenic
   issued: {day: 6, month: 12, year: 2012}
   accessed: {day: 26, month: 9, year: 2014}
+- id: commonjsmodules
+  title: "CommonJS Modules 1.1.1"
+  URL: "http://wiki.commonjs.org/wiki/Modules/1.1.1"
+  author: {family: "CommonJS group"}
+  issued: {day: 23, month: 3, year: 2010}
+  accessed: {day: 28, month: 9, year: 2014}
 
 nocite: |
   @powers2012learning
