@@ -1,12 +1,20 @@
 ## Module
 
-### Ziel
+### Ohne Module
 
-- Code aufeilen
+```html
+<script src="js/jquery.js"></script>
+<script src="js/jquery.lightbox.js"></script>
+<script src="js/effects.js"></script>
+```
+
+### Ziel von Modulen
+
+- Code aufteilen
 - Abhängigkeiten abbilden
 - Code-Teile wiederverwenden können
 
-### CommonJS Module
+### CommonJS Module [@commonjsmodules]
 
 - von node.js verwendet
 - explizite Abhängigkeiten
