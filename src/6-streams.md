@@ -1,6 +1,6 @@
 ## Streams
 
-### Event Streams
+### Event & Data Streams
 
 - "Ereignis-Fluß"
 - Daten werden in Buffer gespeichert (Push/Pull)

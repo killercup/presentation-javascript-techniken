@@ -13,13 +13,11 @@
 ### Beispiel (jQuery)
 
 ```javascript
-jQuery.ready(function ($) {
-  var state = 1;
-  jQuery('button').on('click', function (event) {
-    console.log('Clicked', state, 'times');
-    state = state + 1;
-  });
-})
+var count = 1;
+jQuery('button').on('click', function (event) {
+  console.log('Clicked', count, 'times');
+  count = count + 1;
+});
 ```
 
 ### Beispiel (node.js)
@@ -32,18 +30,19 @@ file.on('error', logError);
 file.on('end', logSuccess);
 ```
 
-Auch: Event bei neuer Verbindung zu Server.
+<aside class="notes">
+- Auch: Event bei neuer Verbindung zu Server.
+- System-Events
+</aside>
 
 ### Events erstellen
 
 ```javascript
-jQuery.ready(function ($) {
-  jQuery('#bar').on('click', function () {
-    jQuery('#foo').trigger('magic', {answer: 42});
-  });
-  jQuery('#foo').on('magic', function (event, data) {
-    console.log("Answer is", data.anwer);
-  });
-})
+jQuery('#bar').on('click', function () {
+  jQuery('#foo').trigger('magic', {answer: 42});
+});
+jQuery('#foo').on('magic', function (event, data) {
+  console.log("Answer is", data.anwer);
+});
 ```
 
