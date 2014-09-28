@@ -10,6 +10,12 @@
 
 Genauer: Promises/A+ [@promisesaplus]
 
+---
+
+![Promises/A+ Logo [@promisesaplus]](figures/logo-then.svg)
+
+---
+
 ### Beispiel (ajax)
 
 ```javascript
@@ -19,8 +25,9 @@ jQuery.ready(function () {
   jQuery.getJSON('/me')
   .then(function (result) {
     currentUser = result.data;
-  })
-  .fail(function (err) { console.error(err); });
+  }, function (err) {
+    console.error(err);
+  });
 });
 ```
 
