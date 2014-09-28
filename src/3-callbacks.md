@@ -2,6 +2,12 @@
 
 ### Anonyme Funktionen
 
+<aside class="notes">
+- _First-order functions_, _closures_
+- Grundlegend für funktionale Porgrammierung
+
+</aside>
+
 ```javascript
 function forEach (list, fn) {
   for (i = 0; i < list.length; i++) {
@@ -20,7 +26,7 @@ forEach(users, function (user) {
 
 - Beim Aufruf einer Funktion wird eine "Rückgabe-Funktion" mitgegeben
 - Reagieren auf (externe) Ereignisse
-- wird im bestehende Kontext ausgeführen
+- werden in bestehendem Kontext ausgeführen
 - Code soll ausgeführt werden, sobald z.B.
     + User klickt
     + Datei geschrieben wurde
@@ -33,9 +39,10 @@ fs.writeFileSync('example.txt', "Lorem Ipsum");
 console.log("File written");
 ```
 
-
+<aside class="notes">
 - `writeFileSync` blockiert den Prozess, bis Datei geschrieben wurde
 - danach wird auf die Konsole geschrieben
+</aside>
 
 ### Asynchroner Code
 
@@ -52,23 +59,21 @@ fs.writeFile('example1.txt', "One", log);
 fs.writeFile('example2.txt', "Two", log);
 ```
 
----
-
+<aside class="notes">
 - `log` ist ein Callback
 - wird ausgeführt, nachdem Datei geschrieben wurde
 - welche Datei zuerst geschrieben wurde, wissen wir nicht
 - auch zu beachten: Fehler-Parameter
+</aside>
 
 ### Reagieren auf Events
 
 Verwendet jQuery.
 
 ```javascript
-jQuery.ready(function () {
-  var currentUser = {name: "Pascal"};
-  jQuery.getJSON('/me', function (result) {
-    currentUser = result.data;
-  });
+var currentUser = {name: "Pascal"};
+jQuery.getJSON('/me', function (result) {
+  currentUser = result.data;
 });
 ```
 
