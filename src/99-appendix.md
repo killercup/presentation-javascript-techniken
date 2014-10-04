@@ -1,6 +1,6 @@
 ## Fragen?
 
-### Danke für eure Aufmerksamkeit.
+### Danke für die Aufmerksamkeit.
 
 ### Quellen {.allowframebreaks}
 
