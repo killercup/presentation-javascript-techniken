@@ -12,7 +12,7 @@ Genauer: Promises/A+ [@promisesaplus]
 
 ---
 
-![Promises/A+ Logo [@promisesaplus]](figures/logo-then.svg)
+![Promises/A+ Logo [@promisesaplus]](figures/logo-then)
 
 ---
 

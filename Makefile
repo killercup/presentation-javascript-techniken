@@ -8,6 +8,9 @@ REVEAL_TEMPLATE ?= $(LIB_FOLDER)/template.html
 MARKDOWN_OPTIONS ?= markdown
 FILTER_OPTIONS ?= --filter pandoc-citeproc
 
+LATEX_TEMPLATE ?= $(LIB_FOLDER)/template.tex
+LATEX_FILETYPE ?= pdf
+
 all: clean revealjs
 
 ###
@@ -20,12 +23,14 @@ all: clean revealjs
 revealjs:
 	cp -R $(LIB_FOLDER) $(OUTPUT_FOLDER); \
 	cp -R $(IMAGES_FOLDER) $(OUTPUT_FOLDER); \
+	cd $(INPUT_FOLDER); \
 	$(PANDOC) $(INPUT_FOLDER)/*.yml $(INPUT_FOLDER)/*.md \
 	--from=$(MARKDOWN_OPTIONS) \
 	--table-of-contents --toc-depth=2 \
 	-V revealjs-url=lib -V transition=linear -V theme=solarized \
 	$(FILTER_OPTIONS) \
 	--template=$(REVEAL_TEMPLATE) \
+	--default-image-extension=svg \
 	--slide-level=3 \
 	--standalone \
 	--to=revealjs --output=$(OUTPUT_FOLDER)/index.html
@@ -38,24 +43,29 @@ revealjs:
 ###
 pdf:
 	cp -R $(LIB_FOLDER) $(OUTPUT_FOLDER); \
+	cd $(INPUT_FOLDER); \
 	cat $(INPUT_FOLDER)/*.md | sed '/^---$$/d' > $(OUTPUT_FOLDER)/tmp_index.md; \
 	$(PANDOC) $(INPUT_FOLDER)/*.yml $(OUTPUT_FOLDER)/tmp_index.md \
 	--from=$(MARKDOWN_OPTIONS) \
 	--table-of-contents \
 	$(FILTER_OPTIONS) \
+	--default-image-extension=pdf \
 	--standalone \
-	--to=latex --output=$(OUTPUT_FOLDER)/script.pdf; \
+	--to=latex --output=$(OUTPUT_FOLDER)/script.$(LATEX_FILETYPE); \
 	rm $(OUTPUT_FOLDER)/tmp_index.md;
 
-# pdflatex throws `Undefined control sequence.` on my machine.
 beamer:
-	cp -R $(LIB_FOLDER) $(OUTPUT_FOLDER); \
+	cp -R $(IMAGES_FOLDER) $(OUTPUT_FOLDER); \
+	cd $(INPUT_FOLDER); \
 	$(PANDOC) $(INPUT_FOLDER)/*.yml $(INPUT_FOLDER)/*.md \
 	--from=$(MARKDOWN_OPTIONS) \
+	--base-header-level=2 \
 	--table-of-contents \
 	$(FILTER_OPTIONS) \
+	--default-image-extension=pdf \
 	--standalone \
-	--to=beamer --output=$(OUTPUT_FOLDER)/index.pdf
+	--template=$(LATEX_TEMPLATE) \
+	--to=beamer --output=$(OUTPUT_FOLDER)/index.$(LATEX_FILETYPE);
 
 clean:
 	rm -rf $(OUTPUT_FOLDER)/*
