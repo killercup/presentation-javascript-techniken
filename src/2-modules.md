@@ -8,6 +8,13 @@
 <script src="js/effects.js"></script>
 ```
 
+<aside class="notes">
+- Das sind 3 HTTP-Requests
+- `jquery.lightbox.js`: Ansheinend ein jQuery-Plugin
+    + Welche Version von jQuery?
+- `effects.js` benötigt anscheinend jQuery und das Lightbox-Plugin. Diese werden vom Browser vorher geladen, und sind _nur_ deshalb verfügbar.
+</aside>
+
 ### Ziel von Modulen
 
 - Code aufteilen
