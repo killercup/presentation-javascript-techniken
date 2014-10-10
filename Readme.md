@@ -33,3 +33,7 @@ Das Makefile wird nur benutzt, um pandoc mit den korrekten Parametern aufzurufen
 - `make beamer` für LaTeX Beamer Ausgabe
     - hat bei mir lokal einige Probleme, kann aber mit `LATEX_FILETYPE=tex make beamer; pdflatex dist/index.tex dist/index.pdf` auch interaktiv benutzt werden (erzeugt viele Log-Dateien)
 
+## reveal.js speaker notes
+
+Um die speaker notes zu benutzen, muss `dist/index.html` Ordner über HTTP aufgerufen werden (wegen Browser Security). Dann kann mit 's' die sekundäre Anzeige geöffnet werden.
+
