@@ -4,7 +4,7 @@
 
 <aside class="notes">
 - _First-order functions_, _closures_
-- Grundlegend für funktionale Porgrammierung
+- Grundlegend für funktionale Programmierung
 
 </aside>
 
@@ -26,7 +26,7 @@ forEach(users, function (user) {
 
 - Beim Aufruf einer Funktion wird eine "Rückgabe-Funktion" mitgegeben
 - Reagieren auf (externe) Ereignisse
-- werden in bestehendem Kontext ausgeführen
+- werden in bestehendem Kontext ausgeführt
 - Code soll ausgeführt werden, sobald z.B.
     + User klickt
     + Datei geschrieben wurde

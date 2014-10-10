@@ -42,7 +42,7 @@ jQuery('#bar').on('click', function () {
   jQuery('#foo').trigger('magic', {answer: 42});
 });
 jQuery('#foo').on('magic', function (event, data) {
-  console.log("Answer is", data.anwer);
+  console.log("Answer is", data.answer);
 });
 ```
 

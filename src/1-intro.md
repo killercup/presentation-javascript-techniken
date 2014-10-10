@@ -4,7 +4,7 @@
 
 - Seit 1995: Skriptsprache für dynamisches HTML
 - Seit 2000: AJAX, Browser-Apps
-- Seit etwa 2008 eine der schnellsten Scriptsprachen [@v8]
+- Seit etwa 2008 eine der schnellsten Script-Sprachen [@v8]
 - 2008: _JavaScript: The Good Parts_ [@crockford2008javascript]
 
 <aside class="notes">
