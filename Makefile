@@ -27,6 +27,7 @@ revealjs:
 	$(PANDOC) $(INPUT_FOLDER)/*.yml $(INPUT_FOLDER)/*.md \
 	--from=$(MARKDOWN_OPTIONS) \
 	--table-of-contents --toc-depth=2 \
+	--smart --html-q-tags \
 	-V revealjs-url=lib -V transition=linear -V theme=solarized \
 	$(FILTER_OPTIONS) \
 	--template=$(REVEAL_TEMPLATE) \

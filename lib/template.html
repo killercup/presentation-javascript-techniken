@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html$if(lang)$ lang="$lang$"$endif$>
+<html$if(locale)$ lang="$locale$"$endif$>
 <head>
   <meta charset="utf-8">
   <meta name="generator" content="pandoc">
@@ -41,6 +41,8 @@ $if(highlighting-css)$
 $endif$
   <style type="text/css">
     /* Custom styles */
+    [lang=de] q {quotes: "»" "«" "›" "‹"; font-style: normal;}
+
     .reveal h1 {font-size: 2em;}
 
     .reveal h1, .reveal h2, .reveal h3, .reveal h4, .reveal h5, .reveal h6 {-webkit-hyphens: auto; -moz-hyphens: auto; hyphens: auto;}
