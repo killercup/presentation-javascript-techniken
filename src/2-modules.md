@@ -79,3 +79,7 @@ helper.demo();
     - webpack [@webpack]
 - Anderes System: AMD (_require.js_)
 
+---
+
+!["What is Webpack?" [@webpack]](figures/what-is-webpack)
+
