@@ -77,9 +77,51 @@ helper.saveTheQueen("Elizabeth");
 - Tools, um CommonJS zu verarbeiten:
     - browserify [@browserify]
     - webpack [@webpack]
-- Anderes System: AMD (_require.js_)
+
+### Browserify Beispiel
+
+```bash
+$ browserify src/main.js -o dist/bundle.js
+```
+
+- Beginnt bei `src/main.js` an
+- Löst rekursive alle Abhängigkeiten auf
+- Schreibt gesamten Code in `dist/bundle.js`
+
+### Webpack [@webpack]
+
+![](figures/what-is-webpack)
+
+### Alternative: Require.js (AMD)
+
+```javascript
+// scripts/fooify.js
+define(function () {
+  // ...
+});
+
+// scripts/main.js
+require(['jquery', 'fooify'], function ($, fooify) {
+  // ...
+});
+```
+
+```html
+<!-- index.html -->
+<script data-main="scripts/main" src="scripts/require.js"></script>
+```
+
+### Entwicklungsvorgehen
+
+- Require.js:
+	- bindet einzelne Dateien direkt ein (_development_)
+	- oder kombiniert sie im Vorhinein (_production_)
+- Browserify/webpack
+	- muss immer ausgeführt werden
+	- kann performant nebenher laufen (_watch_)
 
 ---
 
-!["What is Webpack?" [@webpack]](figures/what-is-webpack)
-
+- beide Systeme
+	- externen Code übernehmen (_shim_)
+	- Code via Plugins verarbeiten und minifizieren
