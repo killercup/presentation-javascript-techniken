@@ -2,7 +2,7 @@
 citation-style: "../lib/pascal.csl"
 references:
 - id: v8
-  title: "V8 JavaScript Engine: Changelog" 
+  title: "V8 JavaScript Engine: Changelog"
   URL: https://code.google.com/p/v8/source/browse/trunk/ChangeLog
   author: {family: Google}
   publisher: Google Code
@@ -66,4 +66,14 @@ references:
   issued: {year: 2008}
   type: book
   publisher: "O'Reilly Media, Inc."
+- id: requirejs
+  title: "Require.js"
+  URL: "http://requirejs.org/"
+  issued: {day: 8, month: 9, year: 2014}
+  accessed: {day: 18, month: 10, year: 2014}
+  version: "2.1.15"
+  author:
+  - family: Burke
+    given: James
+  type: "webpage"
 ---

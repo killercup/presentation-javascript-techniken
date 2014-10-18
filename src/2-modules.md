@@ -92,7 +92,7 @@ $ browserify src/main.js -o dist/bundle.js
 
 ![](figures/what-is-webpack)
 
-### Alternative: Require.js (AMD)
+### Alternative: Require.js/AMD [@requirejs]
 
 ```javascript
 // scripts/fooify.js
