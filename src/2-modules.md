@@ -37,18 +37,18 @@
 ### Beispiel
 
 ```javascript
-// helper.js
+// src/helper.js
 var fs = require('fs');
 module.exports = {
-  demo: function () {
-    return "Lorem ispum";
+  saveTheQueen: function (name) {
+    fs.writeFile(name+".txt", name+" was saved.");
   }
 }
 
 
-// main.js
+// src/main.js
 var helper = require('./helper');
-helper.demo();
+helper.saveTheQueen("Elizabeth");
 ```
 
 ### Pakete
