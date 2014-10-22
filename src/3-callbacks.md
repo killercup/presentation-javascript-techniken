@@ -77,6 +77,17 @@ jQuery.getJSON('/me', function (result) {
 });
 ```
 
+<aside class="notes">
+- Ajax Event: "Request fertig"
+- Callback wird im Fehlerfall nicht ausgeführt (Sonderfall)
+
+</aside>
+
+### Node.js Callback Conventionen
+
+- Asynchrone Funktionen verlangen als letztes Argument eine Callback-Funktion
+- Callbacks werden mit Fehler als erstes Argument aufgerufen
+
 ### Verschachtelte Callbacks
 
 - Beispiel:
