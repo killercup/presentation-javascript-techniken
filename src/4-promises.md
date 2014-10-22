@@ -19,15 +19,13 @@ Genauer: Promises/A+ [@promisesaplus]
 ### Beispiel (ajax)
 
 ```javascript
-jQuery.ready(function () {
-  var currentUser = {name: "Pascal"};
+var currentUser = {name: "Pascal"};
 
-  jQuery.getJSON('/me')
-  .then(function (result) {
-    currentUser = result.data;
-  }, function (err) {
-    console.error(err);
-  });
+jQuery.getJSON('/me')
+.then(function (result) {
+  currentUser = result.data;
+}, function (err) {
+  console.error(err);
 });
 ```
 

@@ -66,7 +66,7 @@ fs.writeFile('example2.txt', "Two", log);
 - auch zu beachten: Fehler-Parameter
 </aside>
 
-### Reagieren auf Events
+---
 
 Verwendet jQuery.
 
@@ -87,6 +87,10 @@ jQuery.getJSON('/me', function (result) {
 
 - Asynchrone Funktionen verlangen als letztes Argument eine Callback-Funktion
 - Callbacks werden mit Fehler als erstes Argument aufgerufen
+
+```javascript
+async(param1, param2, function (err, result) {});
+```
 
 ### Verschachtelte Callbacks
 
