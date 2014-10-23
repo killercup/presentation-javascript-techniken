@@ -1,0 +1,539 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+  <meta charset="utf-8">
+  <meta name="generator" content="pandoc">
+  <meta name="author" content="Pascal Hertleif" />
+  <title>Aktuelle JavaScript Techniken</title>
+  <meta name="apple-mobile-web-app-capable" content="yes" />
+  <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+  <link rel="stylesheet" href="lib/css/reveal.min.css"/>
+  <link rel="stylesheet" href="lib/css/theme/simple.css" id="theme">
+  <style type="text/css">code{white-space: pre;}</style>
+  <style type="text/css">
+    /* Solarized Light */
+    pre.sourceCode { background-color: #FDF6E3; word-break: break-word; }
+    .sourceCode .kw { color: #d33682; }
+    .sourceCode .dt { color: #268BD2; }
+    .sourceCode .dv, .sourceCode .bn, .sourceCode .fl { color: #D33682; }
+    .sourceCode .ch { color: #DC322F; }
+    .sourceCode .st { color: #2AA198; }
+    .sourceCode .co { color: #93A1A1; }
+    .sourceCode .ot { color: #A57800; }
+    .sourceCode .al { color: #CB4B16; font-weight: bold; }
+    .sourceCode .fu { color: #268BD2; }
+    .sourceCode .re { }
+    .sourceCode .er { color: #D30102; font-weight: bold; }
+  </style>
+  <style type="text/css">
+    /* Custom styles */
+    [lang=de] q {quotes: "»" "«" "›" "‹"; font-style: normal;}
+
+    .reveal h1 {font-size: 2em;}
+
+    .reveal h1, .reveal h2, .reveal h3, .reveal h4, .reveal h5, .reveal h6 {-webkit-hyphens: auto; -moz-hyphens: auto; hyphens: auto;}
+    .reveal ul, .reveal ol, .reveal p {line-height: 1.4; margin-bottom: 0.4em;}
+
+    h1.title {color: #dc322f; font-size: 3.77em;}
+    h2.author {color: #586e75;}
+    h3.date {color: #93a1a1;}
+
+    .reveal section p {text-align: left;}
+
+    .reveal figure {display: flex; align-items: flex-end;
+      display: -webkit-flex; display: -moz-flex; display: -ms-flex; display: -o-flex; -webkit-align-items: flex-end;}
+    .reveal figure img {/*flex: 1;*/ border: 0; box-shadow: none; margin: 0 1em 0;
+      /*-webkit-flex: 1;*/}
+    .reveal figure figcaption {font-size: 0.75em; margin-right: 2em;}
+
+    .reveal .citation {font-size: 0.6em; vertical-align: text-top;}
+
+    .reveal pre code {padding: 0;}
+    pre.sourceCode {box-shadow: none; font-size: 0.7em;}
+
+    .reveal .references {font-size: 0.6em; columns: 2;
+      -webkit-columns: 2; -moz-columns: 2;}
+    .references a.uri {word-break: break-all;}
+  </style>
+
+  <!-- If the query includes 'print-pdf', include the PDF print sheet -->
+  <script>
+    if( window.location.search.match( /print-pdf/gi ) ) {
+      var link = document.createElement( 'link' );
+      link.rel = 'stylesheet';
+      link.type = 'text/css';
+      link.href = 'lib/css/print/pdf.css';
+      document.getElementsByTagName( 'head' )[0].appendChild( link );
+    }
+  </script>
+  <!--[if lt IE 9]>
+  <script src="lib/lib/js/html5shiv.js"></script>
+  <![endif]-->
+</head>
+<body>
+  <div class="reveal">
+    <div class="slides">
+
+<section>
+    <h1 class="title">Aktuelle JavaScript Techniken</h1>
+    <h2 class="author">Pascal Hertleif</h2>
+    <h3 class="date">6. Oktober 2014</h3>
+</section>
+<section id="TOC">
+<h1>Gliederung</h1>
+<ul>
+<li><a href="#/javascript-was-bisher-geschah">JavaScript — Was bisher geschah</a></li>
+<li><a href="#/module">Module</a></li>
+<li><a href="#/callbacks">Callbacks</a></li>
+<li><a href="#/promises">Promises</a></li>
+<li><a href="#/events">Events</a></li>
+<li><a href="#/streams">Streams</a></li>
+<li><a href="#/fragen">Fragen?</a></li>
+</ul>
+</section>
+
+<section id="pascal-hertleif" class="slide level3">
+<h1>Pascal Hertleif</h1>
+<ul>
+<li>Informatik-Student</li>
+<li>Web-Entwickler
+<ul>
+<li><q>Reguläre</q> Websites, Typo3</li>
+<li>Web-Applikationen, u.a. mit angular.js</li>
+<li>Build-Tools, REST APIs mit Node.js</li>
+</ul></li>
+<li><a href="http://pascalhertleif.de/">pascalhertleif.de</a></li>
+</ul>
+</section>
+<section><section id="javascript-was-bisher-geschah" class="titleslide slide level2"><h1>JavaScript — Was bisher geschah</h1></section><section class="slide level3">
+
+<ul>
+<li>Seit 1995: Skriptsprache für dynamisches HTML</li>
+<li>Seit 2000: AJAX, Browser-Apps</li>
+<li>Seit etwa 2008 eine der schnellsten Script-Sprachen <span class="citation" data-cites="v8">[2]</span></li>
+<li>2008: <em>JavaScript: The Good Parts</em> <span class="citation" data-cites="crockford2008javascript">[3]</span></li>
+</ul>
+<aside class="notes">
+<ul>
+<li>Erfunden von Brendan Eich</li>
+<li>ECMAScript</li>
+<li>AJAX: Client Side Views</li>
+</ul>
+</aside>
+</section><section class="slide level3">
+
+<ul>
+<li>Node.js <span class="citation" data-cites="nodejs">[4]</span>
+<ul>
+<li>Basiert auf V8 (Chrome’s JS Engine)</li>
+<li>System-Schnittstellen</li>
+<li>Event Loop</li>
+<li>Ideal für JavaScript auf dem Server</li>
+</ul></li>
+</ul>
+</section><section id="dilemma" class="slide level3">
+<h1>Dilemma</h1>
+<ul>
+<li>Immer größere Applikation in JavaScript</li>
+<li>Sehr dynamische, asynchrone Sprache, wenige Sicherheiten</li>
+<li>Ausweg: Struktur, Konventionen, Programmiertechniken</li>
+</ul>
+</section></section>
+<section><section id="module" class="titleslide slide level2"><h1>Module</h1></section><section id="ohne-module" class="slide level3">
+<h1>Ohne Module</h1>
+<pre class="sourceCode html"><code class="sourceCode html"><span class="kw">&lt;script</span><span class="ot"> src=</span><span class="st">&quot;js/jquery.js&quot;</span><span class="kw">&gt;&lt;/script&gt;</span>
+<span class="kw">&lt;script</span><span class="ot"> src=</span><span class="st">&quot;js/jquery.lightbox.js&quot;</span><span class="kw">&gt;&lt;/script&gt;</span>
+<span class="kw">&lt;script</span><span class="ot"> src=</span><span class="st">&quot;js/effects.js&quot;</span><span class="kw">&gt;&lt;/script&gt;</span></code></pre>
+<aside class="notes">
+<ul>
+<li>Das sind 3 HTTP-Requests</li>
+<li><code>jquery.lightbox.js</code>: Anscheinend ein jQuery-Plugin
+<ul>
+<li>Welche Version von jQuery?</li>
+</ul></li>
+<li><code>effects.js</code> benötigt vermutlich jQuery und das Lightbox-Plugin. Diese werden vom Browser vorher geladen, und sind <em>nur</em> deshalb verfügbar.</li>
+</ul>
+</aside>
+</section><section id="ziel-von-modulen" class="slide level3">
+<h1>Ziel von Modulen</h1>
+<ul>
+<li>Code aufteilen</li>
+<li>Abhängigkeiten abbilden</li>
+<li>Code-Teile wiederverwenden können</li>
+</ul>
+</section><section id="commonjs-module-commonjsmodules" class="slide level3">
+<h1>CommonJS Module <span class="citation" data-cites="commonjsmodules">[5]</span></h1>
+<ul>
+<li>von node.js verwendet</li>
+<li>explizite Abhängigkeiten</li>
+<li>Nur eins von vielen Modul-Systemen</li>
+</ul>
+</section><section id="modul-aufbau" class="slide level3">
+<h1>Modul-Aufbau</h1>
+<ul>
+<li>1 Datei = 1 Modul</li>
+<li><code>require</code> lädt andere Module</li>
+<li><code>module</code> repräsentiert das aktuelle Modul</li>
+<li><code>module.exports</code> ist, was andere Module von <code>require</code> bekommen</li>
+</ul>
+</section><section id="beispiel" class="slide level3">
+<h1>Beispiel</h1>
+<pre class="sourceCode javascript"><code class="sourceCode javascript"><span class="co">// src/helper.js</span>
+<span class="kw">var</span> fs = <span class="fu">require</span>(<span class="st">&#39;fs&#39;</span>);
+<span class="ot">module</span>.<span class="fu">exports</span> = {
+  <span class="dt">saveTheQueen</span>: <span class="kw">function</span> (name) {
+    <span class="ot">fs</span>.<span class="fu">writeFile</span>(name+<span class="st">&quot;.txt&quot;</span>, name+<span class="st">&quot; was saved.&quot;</span>);
+  }
+}
+
+
+<span class="co">// src/main.js</span>
+<span class="kw">var</span> helper = <span class="fu">require</span>(<span class="st">&#39;./helper&#39;</span>);
+<span class="ot">helper</span>.<span class="fu">saveTheQueen</span>(<span class="st">&quot;Elizabeth&quot;</span>);</code></pre>
+</section><section id="pakete" class="slide level3">
+<h1>Pakete</h1>
+<ul>
+<li>(wiederverwendbare) Code-Einheiten</li>
+<li>Beschrieben durch
+<ul>
+<li>Name</li>
+<li>Einstiegspunkt</li>
+<li>externe Abhängigkeiten</li>
+</ul></li>
+</ul>
+</section><section id="npm" class="slide level3">
+<h1>NPM</h1>
+<ul>
+<li><a href="https://www.npmjs.org/">npmjs.org</a>, <q>Node Packaged Modules</q></li>
+<li><em>Registry</em> mit 96.608 Paketen (26. Sep 2014)</li>
+<li>löst Abhängigkeiten automatisch auf</li>
+<li><code>npm install express</code></li>
+</ul>
+<aside class="notes">
+<ul>
+<li>Pakete können zentral gespeichert werden (müssen aber nicht)</li>
+<li>Ein Grund, warum node.js so viel Anklang findet</li>
+</ul>
+</aside>
+</section><section id="module-im-browser" class="slide level3">
+<h1>Module im Browser</h1>
+<ul>
+<li>Code kann nicht direkt eingebunden werden</li>
+<li>Tools, um CommonJS zu verarbeiten:
+<ul>
+<li>browserify <span class="citation" data-cites="browserify">[6]</span></li>
+<li>webpack <span class="citation" data-cites="webpack">[7]</span></li>
+</ul></li>
+</ul>
+</section><section id="browserify-beispiel" class="slide level3">
+<h1>Browserify Beispiel</h1>
+<pre class="sourceCode bash"><code class="sourceCode bash">$ <span class="kw">browserify</span> src/main.js -o dist/bundle.js</code></pre>
+<ul>
+<li>Beginnt bei <code>src/main.js</code> an</li>
+<li>Löst rekursive alle Abhängigkeiten auf</li>
+<li>Schreibt gesamten Code in <code>dist/bundle.js</code></li>
+</ul>
+</section><section id="webpack-webpack" class="slide level3">
+<h1>Webpack <span class="citation" data-cites="webpack">[7]</span></h1>
+<figure>
+<img src="figures/what-is-webpack.svg" />
+</figure>
+</section><section id="alternative-require.jsamd-requirejs" class="slide level3">
+<h1>Alternative: Require.js/AMD <span class="citation" data-cites="requirejs">[8]</span></h1>
+<pre class="sourceCode javascript"><code class="sourceCode javascript"><span class="co">// scripts/fooify.js</span>
+<span class="fu">define</span>(<span class="kw">function</span> () {
+  <span class="co">// ...</span>
+});
+
+<span class="co">// scripts/main.js</span>
+<span class="fu">require</span>([<span class="st">&#39;jquery&#39;</span>, <span class="st">&#39;fooify&#39;</span>], <span class="kw">function</span> ($, fooify) {
+  <span class="co">// ...</span>
+});</code></pre>
+<pre class="sourceCode html"><code class="sourceCode html"><span class="co">&lt;!-- index.html --&gt;</span>
+<span class="kw">&lt;script</span><span class="ot"> data-main=</span><span class="st">&quot;scripts/main&quot;</span><span class="ot"> src=</span><span class="st">&quot;scripts/require.js&quot;</span><span class="kw">&gt;&lt;/script&gt;</span></code></pre>
+</section><section id="entwicklungsvorgehen" class="slide level3">
+<h1>Entwicklungsvorgehen</h1>
+<ul>
+<li>Require.js:
+<ul>
+<li>bindet einzelne Dateien direkt ein (<em>development</em>)</li>
+<li>oder kombiniert sie im Vorhinein (<em>production</em>)</li>
+</ul></li>
+<li>Browserify/webpack
+<ul>
+<li>muss immer ausgeführt werden</li>
+<li>kann performant nebenher laufen (<em>watch</em>)</li>
+</ul></li>
+</ul>
+</section><section class="slide level3">
+
+<ul>
+<li>beide Systeme
+<ul>
+<li>externen Code übernehmen (<em>shim</em>)</li>
+<li>Code via Plugins verarbeiten und minifizieren</li>
+</ul></li>
+</ul>
+</section></section>
+<section><section id="callbacks" class="titleslide slide level2"><h1>Callbacks</h1></section><section id="anonyme-funktionen" class="slide level3">
+<h1>Anonyme Funktionen</h1>
+<aside class="notes">
+<ul>
+<li><em>First-order functions</em>, <em>closures</em></li>
+<li>Grundlegend für funktionale Programmierung</li>
+</ul>
+</aside>
+<pre class="sourceCode javascript"><code class="sourceCode javascript"><span class="kw">function</span> <span class="fu">forEach</span> (list, fn) {
+  <span class="kw">for</span> (i = <span class="dv">0</span>; i &lt; <span class="ot">list</span>.<span class="fu">length</span>; i++) {
+    <span class="fu">fn</span>(list[i]);
+  }
+}
+
+<span class="kw">var</span> user = [<span class="st">&#39;Hans&#39;</span>, <span class="st">&#39;Paul&#39;</span>];
+
+<span class="fu">forEach</span>(users, <span class="kw">function</span> (user) {
+  <span class="ot">console</span>.<span class="fu">log</span>(user);
+});</code></pre>
+</section><section id="was-sind-callbacks" class="slide level3">
+<h1>Was sind Callbacks?</h1>
+<ul>
+<li>Beim Aufruf einer Funktion wird eine <q>Rückgabe-Funktion</q> mitgegeben</li>
+<li>Reagieren auf (externe) Ereignisse</li>
+<li>werden in bestehendem Kontext ausgeführt</li>
+<li>Code soll ausgeführt werden, sobald z.B.
+<ul>
+<li>User klickt</li>
+<li>Datei geschrieben wurde</li>
+</ul></li>
+</ul>
+</section><section id="synchroner-code" class="slide level3">
+<h1>Synchroner Code</h1>
+<pre class="sourceCode javascript"><code class="sourceCode javascript"><span class="kw">var</span> fs = <span class="fu">require</span>(<span class="st">&#39;fs&#39;</span>);
+<span class="ot">fs</span>.<span class="fu">writeFileSync</span>(<span class="st">&#39;example.txt&#39;</span>, <span class="st">&quot;Lorem Ipsum&quot;</span>);
+<span class="ot">console</span>.<span class="fu">log</span>(<span class="st">&quot;File written&quot;</span>);</code></pre>
+<aside class="notes">
+<ul>
+<li><code>writeFileSync</code> blockiert den Prozess, bis Datei geschrieben wurde</li>
+<li>danach wird auf die Konsole geschrieben</li>
+</ul>
+</aside>
+</section><section id="asynchroner-code" class="slide level3">
+<h1>Asynchroner Code</h1>
+<pre class="sourceCode javascript"><code class="sourceCode javascript"><span class="kw">var</span> fs = <span class="fu">require</span>(<span class="st">&#39;fs&#39;</span>);
+
+<span class="kw">function</span> <span class="fu">log</span> (err, res) {
+  <span class="kw">if</span> (!err) {
+    <span class="ot">console</span>.<span class="fu">log</span>(<span class="st">&quot;File written&quot;</span>);
+  }
+}
+
+<span class="ot">fs</span>.<span class="fu">writeFile</span>(<span class="st">&#39;example1.txt&#39;</span>, <span class="st">&quot;One&quot;</span>, log);
+<span class="ot">fs</span>.<span class="fu">writeFile</span>(<span class="st">&#39;example2.txt&#39;</span>, <span class="st">&quot;Two&quot;</span>, log);</code></pre>
+<aside class="notes">
+<ul>
+<li><code>log</code> ist ein Callback</li>
+<li>wird ausgeführt, nachdem Datei geschrieben wurde</li>
+<li>welche Datei zuerst geschrieben wurde, wissen wir nicht</li>
+<li>auch zu beachten: Fehler-Parameter</li>
+</ul>
+</aside>
+</section><section class="slide level3">
+
+<p>Verwendet jQuery.</p>
+<pre class="sourceCode javascript"><code class="sourceCode javascript"><span class="kw">var</span> currentUser = {<span class="dt">name</span>: <span class="st">&quot;Pascal&quot;</span>};
+<span class="ot">jQuery</span>.<span class="fu">getJSON</span>(<span class="st">&#39;/me&#39;</span>, <span class="kw">function</span> (result) {
+  currentUser = <span class="ot">result</span>.<span class="fu">data</span>;
+});</code></pre>
+<aside class="notes">
+<ul>
+<li>Ajax Event: <q>Request fertig</q></li>
+<li>Callback wird im Fehlerfall nicht ausgeführt (Sonderfall)</li>
+</ul>
+</aside>
+</section><section id="node.js-callback-conventionen" class="slide level3">
+<h1>Node.js Callback Conventionen</h1>
+<ul>
+<li>Asynchrone Funktionen verlangen als letztes Argument eine Callback-Funktion</li>
+<li>Callbacks werden mit Fehler als erstes Argument aufgerufen</li>
+</ul>
+<pre class="sourceCode javascript"><code class="sourceCode javascript"><span class="fu">async</span>(param1, param2, <span class="kw">function</span> (err, result) {});</code></pre>
+</section><section id="verschachtelte-callbacks" class="slide level3">
+<h1>Verschachtelte Callbacks</h1>
+<ul>
+<li>Beispiel:
+<ul>
+<li>Config-Datei lesen</li>
+<li>dann 3 Netzwerk-Abfragen</li>
+<li>dann User-Eingabe abwarten</li>
+<li>dann Ergebnis in Datei schreiben</li>
+</ul></li>
+<li>viele verschachtelte Funktionen, viele <code>if (error)</code></li>
+<li><q>Callback-Hell</q></li>
+</ul>
+</section></section>
+<section><section id="promises" class="titleslide slide level2"><h1>Promises</h1></section><section id="definition" class="slide level3">
+<h1>Definition</h1>
+<ul>
+<li>Ein <em>Promise</em> repräsentiert einen zukünftigen Wert.</li>
+<li>Es kann erfüllt (<em>fulfilled</em>) oder abgelehnt (<em>rejected</em>) werden.</li>
+<li>Es können Callbacks angehangen werden, die ausgeführt werden, sobald der Wert bekannt ist.</li>
+</ul>
+<p>Genauer: Promises/A+ <span class="citation" data-cites="promisesaplus">[9]</span></p>
+</section><section class="slide level3">
+
+<figure>
+<img src="figures/logo-then.svg" alt="Promises/A+ Logo [9]" /><figcaption>Promises/A+ Logo <span class="citation" data-cites="promisesaplus">[9]</span></figcaption>
+</figure>
+</section><section id="beispiel-ajax" class="slide level3">
+<h1>Beispiel (ajax)</h1>
+<pre class="sourceCode javascript"><code class="sourceCode javascript"><span class="kw">var</span> currentUser = {<span class="dt">name</span>: <span class="st">&quot;Pascal&quot;</span>};
+
+<span class="ot">jQuery</span>.<span class="fu">getJSON</span>(<span class="st">&#39;/me&#39;</span>)
+.<span class="fu">then</span>(<span class="kw">function</span> (result) {
+  currentUser = <span class="ot">result</span>.<span class="fu">data</span>;
+}, <span class="kw">function</span> (err) {
+  <span class="ot">console</span>.<span class="fu">error</span>(err);
+});</code></pre>
+</section><section id="beispiel-node" class="slide level3">
+<h1>Beispiel (node)</h1>
+<pre class="sourceCode javascript"><code class="sourceCode javascript">requests = <span class="fu">readConfig</span>()
+.<span class="fu">then</span>(<span class="kw">function</span> (config) {
+  <span class="kw">return</span> <span class="ot">Promise</span>.<span class="fu">all</span>(urls, <span class="kw">function</span> (url) {
+    <span class="kw">return</span> <span class="fu">request</span>(config, url);
+  });
+})
+.<span class="fu">then</span>(userInput)
+.<span class="fu">then</span>(<span class="fu">writeFile</span>(<span class="st">&#39;result.txt&#39;</span>))
+.<span class="fu">catch</span>(<span class="kw">function</span> (error) {
+  <span class="ot">console</span>.<span class="fu">error</span>(error);
+})</code></pre>
+</section><section id="promise-erstellen" class="slide level3">
+<h1>Promise erstellen</h1>
+<pre class="sourceCode javascript"><code class="sourceCode javascript"><span class="kw">var</span> Promise = <span class="fu">require</span>(<span class="st">&#39;bluebird&#39;</span>);
+<span class="kw">var</span> maybe = <span class="kw">new</span> <span class="fu">Promise</span>(<span class="kw">function</span> (resolve, reject) {
+  <span class="kw">var</span> x = <span class="ot">Math</span>.<span class="fu">random</span>();
+  <span class="fu">setTimeout</span>(<span class="kw">function</span> () {
+    <span class="kw">if</span> (x &gt; <span class="fl">0.5</span>) {
+      <span class="fu">resolve</span>(<span class="st">&quot;yay&quot;</span>);
+    } <span class="kw">else</span> {
+      <span class="fu">reject</span>(<span class="st">&quot;nope&quot;</span>);
+    }
+  }, <span class="dv">1000</span>);
+});</code></pre>
+</section></section>
+<section><section id="events" class="titleslide slide level2"><h1>Events</h1></section><section id="asynchrone-ereignisse" class="slide level3">
+<h1>Asynchrone Ereignisse</h1>
+<ul>
+<li>User klickt</li>
+<li>Antwort von Netzwerk</li>
+</ul>
+</section><section id="wiederholbar" class="slide level3">
+<h1>Wiederholbar</h1>
+<ul>
+<li>5 Klicks auf den selben Knopf</li>
+<li>Teil einer Datei gelesen (bis Ende erreicht)</li>
+</ul>
+</section><section id="beispiel-jquery" class="slide level3">
+<h1>Beispiel (jQuery)</h1>
+<pre class="sourceCode javascript"><code class="sourceCode javascript"><span class="kw">var</span> count = <span class="dv">1</span>;
+<span class="fu">jQuery</span>(<span class="st">&#39;button&#39;</span>).<span class="fu">on</span>(<span class="st">&#39;click&#39;</span>, <span class="kw">function</span> (event) {
+  <span class="ot">console</span>.<span class="fu">log</span>(<span class="st">&#39;Clicked&#39;</span>, count, <span class="st">&#39;times&#39;</span>);
+  count = count + <span class="dv">1</span>;
+});</code></pre>
+</section><section id="beispiel-node.js" class="slide level3">
+<h1>Beispiel (node.js)</h1>
+<pre class="sourceCode javascript"><code class="sourceCode javascript"><span class="kw">var</span> fs = <span class="fu">require</span>(<span class="st">&#39;fs&#39;</span>);
+<span class="kw">var</span> file = <span class="ot">fs</span>.<span class="fu">createReadStream</span>(<span class="st">&#39;test.csv&#39;</span>);
+<span class="ot">file</span>.<span class="fu">on</span>(<span class="st">&#39;data&#39;</span>, logProgress);
+<span class="ot">file</span>.<span class="fu">on</span>(<span class="st">&#39;error&#39;</span>, logError);
+<span class="ot">file</span>.<span class="fu">on</span>(<span class="st">&#39;end&#39;</span>, logSuccess);</code></pre>
+<aside class="notes">
+<ul>
+<li>Auch: Event bei neuer Verbindung zu Server.</li>
+<li>System-Events</li>
+</ul>
+</aside>
+</section><section id="events-erstellen" class="slide level3">
+<h1>Events erstellen</h1>
+<pre class="sourceCode javascript"><code class="sourceCode javascript"><span class="fu">jQuery</span>(<span class="st">&#39;#bar&#39;</span>).<span class="fu">on</span>(<span class="st">&#39;click&#39;</span>, <span class="kw">function</span> () {
+  <span class="fu">jQuery</span>(<span class="st">&#39;#foo&#39;</span>).<span class="fu">trigger</span>(<span class="st">&#39;magic&#39;</span>, {<span class="dt">answer</span>: <span class="dv">42</span>});
+});
+<span class="fu">jQuery</span>(<span class="st">&#39;#foo&#39;</span>).<span class="fu">on</span>(<span class="st">&#39;magic&#39;</span>, <span class="kw">function</span> (event, data) {
+  <span class="ot">console</span>.<span class="fu">log</span>(<span class="st">&quot;Answer is&quot;</span>, <span class="ot">data</span>.<span class="fu">answer</span>);
+});</code></pre>
+</section></section>
+<section><section id="streams" class="titleslide slide level2"><h1>Streams</h1></section><section id="event-data-streams" class="slide level3">
+<h1>Event &amp; Data Streams</h1>
+<ul>
+<li><q>Ereignis-Fluß</q></li>
+<li>Daten werden in Buffer gespeichert (Push/Pull)</li>
+<li>Functional Reactive Programming</li>
+</ul>
+</section><section id="streams-in-node" class="slide level3">
+<h1>Streams in Node</h1>
+<pre class="sourceCode javascript"><code class="sourceCode javascript"><span class="kw">var</span> request = <span class="fu">require</span>(<span class="st">&quot;request&quot;</span>);
+<span class="kw">var</span> zlib = <span class="fu">require</span>(<span class="st">&quot;zlib&quot;</span>);
+<span class="kw">var</span> fs = <span class="fu">require</span>(<span class="st">&quot;fs&quot;</span>);
+
+<span class="co">// HTTP GET Request</span>
+<span class="fu">request</span>(<span class="st">&quot;http://nodestreams.com/input/people.json.gz&quot;</span>)
+    <span class="co">// Un-Gzip</span>
+    .<span class="fu">pipe</span>(<span class="ot">zlib</span>.<span class="fu">createGunzip</span>())
+    <span class="co">// Write File</span>
+    .<span class="fu">pipe</span>(<span class="ot">fs</span>.<span class="fu">createWriteStream</span>(<span class="st">&quot;output/people.json&quot;</span>));</code></pre>
+<p>Vergleiche auch Beispiele auf <a href="http://nodestreams.com/">nodestreams.com</a>.</p>
+</section></section>
+<section><section id="fragen" class="titleslide slide level2"><h1>Fragen?</h1></section><section id="danke-für-die-aufmerksamkeit." class="slide level3">
+<h1>Danke für die Aufmerksamkeit.</h1>
+</section><section id="quellen" class="slide level3 unnumbered allowframebreaks">
+<h1>Quellen</h1>
+<div class="references">
+<p>[1] S. Powers, <em>Learning node</em>. O’Reilly Media, Inc., 2012. </p>
+<p>[2] Google, „V8 JavaScript Engine: Changelog“, 2008. <a href="https://code.google.com/p/v8/source/browse/trunk/ChangeLog" class="uri">https://code.google.com/p/v8/source/browse/trunk/ChangeLog</a>. (Zugegriffen: 26. September 2014)</p>
+<p>[3] D. Crockford, <em>JavaScript: The Good Parts</em>. O’Reilly Media, Inc., 2008. </p>
+<p>[4] D. Ryan, „Node.js“, 2009. <a href="http://nodejs.org/" class="uri">http://nodejs.org/</a>. (Zugegriffen: 26. September 2014)</p>
+<p>[5] CommonJS group, „CommonJS Modules 1.1.1“. 23. März 2010. <a href="http://wiki.commonjs.org/wiki/Modules/1.1.1" class="uri">http://wiki.commonjs.org/wiki/Modules/1.1.1</a>. (Zugegriffen: 28. September 2014)</p>
+<p>[6] Browserling Inc., „Browserify website“, 2012. <a href="http://browserify.org/" class="uri">http://browserify.org/</a>. (Zugegriffen: 22. September 2014)</p>
+<p>[7] T. Koppers, „webpack module bundler“, 4. März 2012. <a href="http://webpack.github.io/" class="uri">http://webpack.github.io/</a>. (Zugegriffen: 21. September 2014)</p>
+<p>[8] J. Burke, „Require.js“, 8. September 2014. <a href="http://requirejs.org/" class="uri">http://requirejs.org/</a>. (Zugegriffen: 18. Oktober 2014)</p>
+<p>[9] B. Cavalier und D. Denicola, „Promises/A+“. 6. Dezember 2012. <a href="http://promisesaplus.com/" class="uri">http://promisesaplus.com/</a>. (Zugegriffen: 26. September 2014)</p>
+</div>
+</section></section>
+    </div>
+  </div>
+
+  <script src="lib/lib/js/head.min.js"></script>
+  <script src="lib/js/reveal.min.js"></script>
+  <script>
+      // Full list of configuration options available here:
+      // https://github.com/hakimel/reveal.js#configuration
+      Reveal.initialize({
+        width: 1000,
+        height: 560,
+        margin: 0.1,
+
+        minScale: 0.1,
+        maxScale: 3.0,
+
+        controls: true,
+        touch: true,
+        progress: true,
+        slideNumber: true,
+        history: true,
+        center: true,
+        theme: 'solarized', // available themes are in /css/theme
+        transition: 'linear', // default/cube/page/concave/zoom/linear/fade/none
+
+        // Optional libraries used to extend on reveal.js
+        dependencies: [
+          { src: 'lib/lib/js/classList.js', condition: function() { return !document.body.classList; } },
+//          { src: 'lib/plugin/zoom-js/zoom.js', async: true, condition: function() { return !!document.body.classList; } },
+          { src: 'lib/plugin/notes/notes.js', async: true, condition: function() { return !!document.body.classList; } },
+//          { src: 'lib/plugin/highlight/highlight.js', async: true, callback: function() { hljs.initHighlightingOnLoad(); } },
+//          { src: 'lib/plugin/search/search.js', async: true, condition: function() { return !!document.body.classList; }, }
+//          { src: 'lib/plugin/remotes/remotes.js', async: true, condition: function() { return !!document.body.classList; } }
+]});
+    </script>
+    </body>
+</html>
